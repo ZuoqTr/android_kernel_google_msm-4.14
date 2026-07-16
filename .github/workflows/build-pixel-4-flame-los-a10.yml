@@ -1,0 +1,47 @@
+name: Build Pixel 4 (flame) LineageOS A10
+
+on:
+  workflow_call:
+  workflow_dispatch:
+
+env:
+  DEVICE_NAME: "pixel_4"
+  DEVICE_CODENAME: "sunfish"
+
+  CUSTOM_CMDS: "CLANG_TRIPLE=aarch64-linux-gnu-"
+  EXTRA_CMDS: "LLVM=1 LLVM_IAS=1"
+
+  KERNEL_SOURCE: "https://github.com/LineageOS/android_kernel_google_msm-4.14"
+  KERNEL_BRANCH: "lineage-19.1"
+
+  CLANG_SOURCE: "https://raw.githubusercontent.com/Neutron-Toolchains/antman/main/antman"
+
+  DEFCONFIG_NAME: "sunfish_defconfig"
+
+  KERNELSU_AUTO_GET: "true"
+  KERNELSU_AUTO_FORK: "sukisu"
+
+  SUSFS_ENABLE: "true"
+  SUSFS_FIXED: "false"
+
+  AK3_SOURCE: "https://github.com/osm0sis/AnyKernel3.git"
+  AK3_BRANCH: "master"
+
+  PACK_METHOD: "Anykernel3"
+
+jobs:
+  build-kernel:
+    name: Build Kernel
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+      - uses: ./.github/workflows/build-env
+      - uses: ./.github/workflows/build-ready
+      - uses: ./.github/workflows/patch-susfs
+      - uses: ./.github/workflows/patch-no-kprobe
+      - uses: ./.github/workflows/patch-rekernel
+      - uses: ./.github/workflows/patch-droidspaces
+      - uses: ./.github/workflows/patch-baseband-guard
+      - uses: ./.github/workflows/build-process
+      - uses: ./.github/workflows/pack-process
+      - uses: ./.github/workflows/upload-files
