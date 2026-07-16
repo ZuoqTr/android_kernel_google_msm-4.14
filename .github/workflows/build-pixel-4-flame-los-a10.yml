@@ -28,6 +28,8 @@ env:
   AK3_BRANCH: "master"
 
   PACK_METHOD: "Anykernel3"
+  
+  PYTHON_VERSION: "3"
 
 jobs:
   build-kernel:
