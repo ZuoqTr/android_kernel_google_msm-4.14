@@ -9,7 +9,7 @@ env:
   DEVICE_CODENAME: "sunfish"
 
   CUSTOM_CMDS: "CLANG_TRIPLE=aarch64-linux-gnu-"
-  EXTRA_CMDS: "LLVM=1 LLVM_IAS=1 CROSS_COMPILE_ARM32=$(pwd)/gcc-arm32/bin/arm-linux-androideabi-"
+  EXTRA_CMDS: "LLVM=1 LLVM_IAS=1"
 
   KERNEL_SOURCE: "https://github.com/LineageOS/android_kernel_google_msm-4.14"
   KERNEL_BRANCH: "lineage-19.1"
@@ -17,9 +17,6 @@ env:
   CLANG_SOURCE: "https://raw.githubusercontent.com/Neutron-Toolchains/antman/main/antman"
 
   DEFCONFIG_NAME: "sunfish_defconfig"
-
-  CUSTOM_CMDS: "CLANG_TRIPLE=aarch64-linux-gnu-"
-  EXTRA_CMDS: "LLVM=1 LLVM_IAS=1"
 
   KERNELSU_AUTO_GET: "true"
   KERNELSU_AUTO_FORK: "sukisu"
