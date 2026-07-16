@@ -24,7 +24,11 @@ env:
   HOOK_METHOD: "syscall"
 
   SUSFS_ENABLE: "true"
-  SUSFS_FIXED: "false"
+  SUSFS_FIXED: "true"
+  PATCHES_SOURCE: "ZuoqTr/susfs_in_kernel-4.14"
+  PATCHES_BRANCH: "main"
+  SUSFS_FOLDER_FIXED: ""
+  SUSFS_PATCH_FIXED: "50_add_susfs_in_kernel-4.14"
 
   AK3_SOURCE: "https://github.com/osm0sis/AnyKernel3.git"
   AK3_BRANCH: "master"
@@ -34,6 +38,7 @@ env:
   PYTHON_VERSION: "3"
 
   BUILD_DEBUGGER: "true"
+  SKIP_PATCH: "true"
 
 jobs:
   build-kernel:
